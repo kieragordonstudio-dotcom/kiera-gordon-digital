@@ -1,0 +1,26 @@
+export const siteConfig = {
+  name: 'Kiera Gordon Digital',
+  strapline: 'Websites for independent beauty businesses.',
+  description:
+    'Premium, booking-ready websites for salons and independent beauty businesses.',
+  email: 'hello@kieragordondigital.co.uk',
+  phone: '',
+  founderName: 'Kiera Gordon',
+  price: '£795',
+  deposit: '50%',
+  carePlanPrice: '£19/month',
+  turnaround: '7-10 working days after all required content has been received',
+  revisions: 2,
+  bugSupport: '30 days of technical bug support',
+  conceptCta: 'See what your salon could look like',
+  conceptFormCta: 'Request my homepage concept',
+  secondaryCta: 'See our work',
+  microcopy: 'Free homepage concept · No call required · No payment details',
+  bookingPlatforms: ['Fresha', 'Treatwell', 'Booksy'],
+  legalNote:
+    'Starter legal pages are provided for practical launch preparation and are not legal advice.',
+  socialLinks: [] as Array<{ label: string; href: string }>,
+  atelierUnionLiveUrl: '#',
+  formEndpoint: '',
+  footerStatement: 'Websites for independent beauty businesses.',
+};
