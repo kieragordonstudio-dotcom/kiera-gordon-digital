@@ -14,7 +14,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kiera-gordon-digital.local'),
+  metadataBase: new URL('https://kiera-gordon-digital.kieragordonstudio.chatgpt.site'),
   title: 'Kiera Gordon Digital | Websites for independent beauty businesses',
   description:
     'Premium, booking-ready websites for salons and independent beauty businesses.',
