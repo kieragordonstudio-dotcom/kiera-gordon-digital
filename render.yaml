@@ -3,6 +3,11 @@ services:
     name: kiera-gordon-digital
     runtime: node
     plan: free
-    buildCommand: pnpm install --frozen-lockfile && pnpm run build
-    startCommand: pnpm run start
-    autoDeploy: false
+    region: frankfurt
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
+    startCommand: corepack enable && pnpm run start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.13.0

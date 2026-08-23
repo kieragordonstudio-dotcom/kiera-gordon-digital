@@ -26,11 +26,23 @@ pnpm run build
 
 The deployment build is written to `dist/`.
 
-## Deploy
+## Deploy To Render
 
-This project is already configured for OpenAI Sites through `.openai/hosting.json`.
+This project is configured for Render with `render.yaml`.
 
-For Render, use `render.yaml` in this repo. The app runs as a Node web service because the current Sites-compatible build produces a worker/server entry as well as static client assets.
+Use Render's Blueprint flow:
+
+1. Push this folder to a GitHub, GitLab or Bitbucket repository.
+2. In Render, create a new Blueprint from that repository.
+3. Render will read `render.yaml`, create a Node web service and deploy it.
+
+The default service name is `kiera-gordon-digital`, so the expected Render URL is:
+
+```text
+https://kiera-gordon-digital.onrender.com
+```
+
+If Render assigns a different URL, update `metadataBase` in `app/layout.tsx`.
 
 ## Where To Edit Things
 
