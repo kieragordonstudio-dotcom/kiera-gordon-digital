@@ -1,40 +1,40 @@
 export const processSteps = [
   {
     step: '01',
-    title: 'Show us your business',
-    copy: 'Send your current website, booking link and social profiles.',
+    title: 'Send your business',
+    copy: 'Share your current website, booking page, Instagram or whatever customers already use to find you.',
   },
   {
     step: '02',
     title: 'See your concept',
-    copy: 'We create a personalised homepage direction before you commit.',
+    copy: 'You receive a personalised homepage direction for your beauty business before paying anything.',
   },
   {
     step: '03',
-    title: 'Make it yours',
-    copy: 'If you want to continue, the 50% deposit starts the full build and you complete our short onboarding.',
+    title: 'Approve and start',
+    copy: 'If the direction feels right, the project moves into the full website build at the launch price.',
   },
   {
     step: '04',
-    title: 'Review it',
-    copy: 'You receive a private full-site preview and two consolidated revision rounds.',
+    title: 'Review',
+    copy: 'You review the website in a private preview and send feedback across two focused revision rounds.',
   },
   {
     step: '05',
     title: 'Go live',
-    copy: 'Once approved, the final 50% is paid and we launch the site.',
+    copy: 'The finished site is launched, connected to your domain and checked across key devices.',
   },
 ];
 
 export const clientChecklist = [
-  'Logo',
-  'Photos',
+  'Current website, booking page or Instagram',
+  'Logo or existing brand assets',
+  'Photos you already use',
   'Service and pricing information',
   'Booking link',
-  'Team details',
-  'Contact and location information',
-  'Current website or social links',
-  'Any existing brand assets',
+  'Team details where relevant',
+  'Contact, location and opening hours',
+  'Reviews or testimonials you are allowed to use',
 ];
 
-export const journey = ['Discover', 'Trust', 'Choose', 'Book'];
+export const journey = ['Instagram', 'Google', 'Website', 'Booking'];

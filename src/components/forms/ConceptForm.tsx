@@ -58,14 +58,14 @@ export function ConceptForm() {
     return (
       <div className="form-success" role="status" aria-live="polite">
         <p className="eyebrow">Form preview</p>
-        <h2>Your request is ready to connect.</h2>
+        <h2>Your request is ready, but it has not been sent.</h2>
         <p>
-          This local version has validated the details, but it has not sent an
-          email because no form endpoint is configured yet. Connect Formspree,
-          Basin or another endpoint before using this page with customers.
+          The details passed validation, but this form is not connected to a
+          backend yet. Until a form endpoint is added, send enquiries directly
+          to <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
         </p>
         <Link className="button primary" href="/concept">
-          Send another request
+          Check another request
         </Link>
       </div>
     );
@@ -143,8 +143,8 @@ export function ConceptForm() {
       </p>
       {!siteConfig.formEndpoint ? (
         <p className="form-preview-note" id="form-preview">
-          Demo mode: submissions are validated in the browser only until a form
-          endpoint is added in <code>src/config/site.ts</code>.
+          This form is not connected yet. Until it is, email{' '}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
         </p>
       ) : null}
     </form>

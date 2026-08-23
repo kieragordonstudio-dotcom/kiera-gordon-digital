@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kiera-gordon-digital.onrender.com/sitemap.xml

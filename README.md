@@ -1,6 +1,6 @@
 # Kiera Gordon Digital
 
-Public website for Kiera Gordon Digital, a premium website studio for independent beauty businesses.
+Public website for Kiera Gordon Digital, a graphic website studio for independent beauty businesses.
 
 ## Run Locally
 
@@ -110,10 +110,10 @@ Then update `Wordmark` to render that file.
 The founder image placeholder is in `src/App.tsx`, inside `AboutSection`. Search for:
 
 ```text
-Replace with founder portrait.
+Founder image placeholder
 ```
 
-Replace the abstract panel with a real portrait image when supplied.
+Replace the graphic panel with a real portrait image when supplied.
 
 ## Connect The Concept Form
 

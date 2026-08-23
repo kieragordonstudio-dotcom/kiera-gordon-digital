@@ -2,35 +2,7 @@
 
 This file is for simple edits after launch.
 
-## Change The Accent Colour
-
-Open:
-
-```text
-src/styles/tokens.css
-```
-
-Change:
-
-```css
---color-accent: #c94f3d;
-```
-
-## Change The Background Colour
-
-Open:
-
-```text
-src/styles/tokens.css
-```
-
-Change:
-
-```css
---color-background: #f5f3ef;
-```
-
-## Change The £795 Price
+## Change The Launch Price
 
 Open:
 
@@ -41,12 +13,13 @@ src/config/site.ts
 Change:
 
 ```ts
-price: '£795',
+launchPrice: '£149',
 ```
 
-Also update the two payment lines in `src/App.tsx` if the 50% payment amounts change.
+The homepage, pricing page, FAQ, terms and offer panels read from this central
+value.
 
-## Change The £19 Care Plan
+## Change The Offer Note
 
 Open:
 
@@ -57,8 +30,19 @@ src/config/site.ts
 Change:
 
 ```ts
-carePlanPrice: '£19/month',
+offerNote: 'Currently £149 while Kiera Gordon Digital builds its first client portfolio.',
 ```
+
+## Change Colours
+
+Open:
+
+```text
+src/styles/tokens.css
+```
+
+The current system is off-white, black, grey and cobalt. Update the token values
+there if the studio identity changes.
 
 ## Change Contact Details
 
@@ -88,9 +72,9 @@ src/config/site.ts
 Change:
 
 ```ts
-conceptCta: 'See what your salon could look like',
-conceptFormCta: 'Request my homepage concept',
-secondaryCta: 'See our work',
+conceptCta: 'Get your free concept',
+conceptFormCta: 'Send my business',
+secondaryCta: 'View our work',
 ```
 
 ## Replace The Temporary Wordmark With A Logo
@@ -132,10 +116,24 @@ src/App.tsx
 Find:
 
 ```text
-Replace with founder portrait.
+Founder image placeholder
 ```
 
-Replace the abstract `founder-panel` content with the image.
+Replace that graphic panel with the real photograph.
+
+## Update Atelier Union Screenshots
+
+Replace the files in:
+
+```text
+public/projects/atelier-union/
+```
+
+Then update labels or alt text in:
+
+```text
+src/data/portfolio.ts
+```
 
 ## Add A Real Client Project
 
@@ -145,7 +143,8 @@ Open:
 src/data/portfolio.ts
 ```
 
-Add the real project details. Be clear whether it is a live client project or a concept.
+Add the real project details. Be clear whether it is a live client project or a
+concept project.
 
 Then open:
 
@@ -171,6 +170,4 @@ Change:
 formEndpoint: '',
 ```
 
-to the endpoint URL.
-
-Test the form after changing it.
+to the endpoint URL. Test the form after changing it.
