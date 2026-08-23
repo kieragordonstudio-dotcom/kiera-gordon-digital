@@ -1,45 +1,92 @@
 export const packageInclusions = [
   'Up to 5 core pages',
-  'Custom visual direction based on your business',
+  'Custom visual direction around your business',
   'Mobile-first responsive design',
-  'Services, treatments and prices',
-  'Gallery or work section',
-  'Reviews or testimonials supplied by you',
-  'Team section where relevant',
-  'Location, hours and contact details',
+  'Treatments, services and prices',
+  'Gallery of your work',
+  'Customer-supplied reviews or testimonials',
+  'Team details where relevant',
+  'Location and opening hours',
+  'Contact information',
   'Existing booking-system integration',
-  'Google Maps where relevant',
   'Basic SEO foundations',
   'Page titles and metadata',
-  'Domain connection and SSL',
+  'Domain connection',
+  'SSL setup where applicable',
   'Reasonable content organisation and copy polish',
   '2 revision rounds',
-  'Launch support',
-  'Short technical bug-fix period after launch',
+  'Launch',
+  '1 month technical support after launch',
 ];
 
 export const notIncluded = [
-  'Custom booking backend',
-  'Unlimited revisions or edits',
+  'KGD backend unless you choose Managed',
+  'KGD owner dashboard unless you choose Managed',
+  'Unlimited edits',
   'Ecommerce systems',
-  'Advanced memberships',
-  'Custom apps',
-  'Full branding projects',
+  'New features after scope is agreed',
   'Photography',
   'Social-media management',
-  'Advanced SEO campaigns',
+  'Ongoing SEO or marketing',
   'Guaranteed rankings',
-  'Complex integrations',
-  'Large-scale copywriting',
-  'Email IT support',
-  '24/7 support',
+  'Branding projects',
+  'Third-party IT or email support',
+  'Indefinite maintenance',
+];
+
+export const operatingOptions = [
+  {
+    name: 'KGD Managed',
+    price: '£15 / month',
+    summary: 'Hosting, KGD booking system and owner platform included.',
+    items: [
+      'KGD-managed website hosting',
+      'KGD booking system',
+      'Owner dashboard / owner area',
+      'Managed backend and platform infrastructure',
+    ],
+  },
+  {
+    name: 'Your own hosting',
+    price: 'Hosting paid separately',
+    summary:
+      'Your website connects to your existing booking provider and your chosen hosting.',
+    items: [
+      'Use Fresha, Booksy, Treatwell or another provider',
+      'No KGD backend or owner dashboard',
+      'Kiera can set up hosting for you',
+      'You pay the hosting provider directly',
+    ],
+  },
 ];
 
 export const ownershipItems = [
   'Your domain stays in your name.',
-  'You own the finished website.',
-  'No long-term lock-in.',
-  'No mandatory monthly contract.',
-  'Two revision rounds are included.',
+  'You own the completed website.',
+  'You own your content and images.',
+  'You own your business and customer data.',
+  'KGD Managed is optional.',
+  'The KGD platform is licensed while subscribed, not sold outright.',
   'Extra work is quoted before it happens.',
+];
+
+export const supportCovers = [
+  'Website bugs',
+  'Broken links',
+  'Responsive or layout defects',
+  'Form defects',
+  'Initial domain or SSL issues caused by the setup',
+  'Booking integration issues caused by the implementation',
+  'Browser or device bugs attributable to the site',
+];
+
+export const supportExcludes = [
+  'Unlimited edits',
+  'Content changes',
+  'Redesign',
+  'New pages',
+  'New features or integrations',
+  'Ongoing SEO, marketing or social media',
+  'Branding or photography',
+  'Third-party IT or email support',
 ];

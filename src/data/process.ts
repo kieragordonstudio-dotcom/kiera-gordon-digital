@@ -2,27 +2,27 @@ export const processSteps = [
   {
     step: '01',
     title: 'Send your business',
-    copy: 'Share your current website, booking page, Instagram or whatever customers already use to find you.',
+    copy: 'Share your current website, booking page, Instagram or business details.',
   },
   {
     step: '02',
-    title: 'See your concept',
-    copy: 'You receive a personalised homepage direction for your beauty business before paying anything.',
+    title: 'Confirm the project',
+    copy: 'Kiera confirms what you need, the scope and the £149 website build.',
   },
   {
     step: '03',
-    title: 'Approve and start',
-    copy: 'If the direction feels right, the project moves into the full website build at the launch price.',
+    title: 'Build',
+    copy: 'Your website is designed around your business, services and customers.',
   },
   {
     step: '04',
     title: 'Review',
-    copy: 'You review the website in a private preview and send feedback across two focused revision rounds.',
+    copy: 'You review the site and use your two included revision rounds.',
   },
   {
     step: '05',
     title: 'Go live',
-    copy: 'The finished site is launched, connected to your domain and checked across key devices.',
+    copy: 'The finished site is connected to your domain and launched.',
   },
 ];
 
@@ -37,4 +37,21 @@ export const clientChecklist = [
   'Reviews or testimonials you are allowed to use',
 ];
 
-export const journey = ['Instagram', 'Google', 'Website', 'Booking'];
+export const journey = [
+  {
+    title: 'Instagram',
+    copy: 'They see your work.',
+  },
+  {
+    title: 'Google',
+    copy: 'They search for you.',
+  },
+  {
+    title: 'Website',
+    copy: 'They check your treatments, prices, work and reviews.',
+  },
+  {
+    title: 'Booking',
+    copy: 'They choose an appointment.',
+  },
+];

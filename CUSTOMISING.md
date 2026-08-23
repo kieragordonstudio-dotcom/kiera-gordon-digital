@@ -2,7 +2,7 @@
 
 This file is for simple edits after launch.
 
-## Change The Launch Price
+## Change The Website Build Price
 
 Open:
 
@@ -16,10 +16,9 @@ Change:
 launchPrice: '£149',
 ```
 
-The homepage, pricing page, FAQ, terms and offer panels read from this central
-value.
+The homepage, pricing page, FAQ, terms and offer panels read from this central value.
 
-## Change The Offer Note
+## Change The Managed Plan Price
 
 Open:
 
@@ -30,19 +29,10 @@ src/config/site.ts
 Change:
 
 ```ts
-offerNote: 'Currently £149 while Kiera Gordon Digital builds its first client portfolio.',
+managedPrice: '£15 / month',
 ```
 
-## Change Colours
-
-Open:
-
-```text
-src/styles/tokens.css
-```
-
-The current system is off-white, black, grey and cobalt. Update the token values
-there if the studio identity changes.
+Also review `src/data/pricing.ts` and `src/data/faq.ts` if the Managed scope changes.
 
 ## Change Contact Details
 
@@ -72,12 +62,50 @@ src/config/site.ts
 Change:
 
 ```ts
-conceptCta: 'Get your free concept',
-conceptFormCta: 'Send my business',
+primaryCta: 'Start your website',
+formCta: 'Send my enquiry',
 secondaryCta: 'View our work',
 ```
 
-## Replace The Temporary Wordmark With A Logo
+## Change Route Metadata
+
+Open:
+
+```text
+site-meta.json
+```
+
+This file controls the site origin, sitemap routes, route metadata and the retired enquiry-route redirect.
+
+## Connect The Enquiry Form
+
+The form endpoint is:
+
+```text
+/api/enquiry
+```
+
+Set these Render environment variables:
+
+```text
+RESEND_API_KEY
+ENQUIRY_FROM
+ENQUIRY_TO
+```
+
+`ENQUIRY_TO` is optional and defaults to `hello@kieragordondigital.co.uk`.
+
+## Change Colours
+
+Open:
+
+```text
+src/styles/tokens.css
+```
+
+The current system is near-white, black, grey and cobalt.
+
+## Replace The Wordmark With A Logo
 
 Add the real logo file to:
 
@@ -85,19 +113,7 @@ Add the real logo file to:
 public/logo.svg
 ```
 
-Open:
-
-```text
-src/App.tsx
-```
-
-Find:
-
-```text
-function Wordmark()
-```
-
-Replace the text wordmark with an image tag using `/logo.svg`.
+Open `src/App.tsx`, find `function Wordmark()` and replace the text wordmark with an image tag using `/logo.svg`.
 
 ## Add A Founder Image
 
@@ -107,23 +123,17 @@ Add the portrait to:
 public/founder.jpg
 ```
 
-Open:
+Then open `src/config/site.ts` and set:
 
-```text
-src/App.tsx
+```ts
+founderImage: '/founder.jpg',
 ```
 
-Find:
-
-```text
-Founder image placeholder
-```
-
-Replace that graphic panel with the real photograph.
+Only use a real supplied portrait.
 
 ## Update Atelier Union Screenshots
 
-Replace the files in:
+Replace the WebP files in:
 
 ```text
 public/projects/atelier-union/
@@ -143,8 +153,7 @@ Open:
 src/data/portfolio.ts
 ```
 
-Add the real project details. Be clear whether it is a live client project or a
-concept project.
+Add the real project details. Be clear whether it is a live client project or self-initiated work.
 
 Then open:
 
@@ -153,21 +162,3 @@ src/App.tsx
 ```
 
 Update the Work page and add a case-study route for the new project.
-
-## Connect The Concept Form
-
-Create a form endpoint in Formspree, Basin or another form service.
-
-Open:
-
-```text
-src/config/site.ts
-```
-
-Change:
-
-```ts
-formEndpoint: '',
-```
-
-to the endpoint URL. Test the form after changing it.

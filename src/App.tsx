@@ -1,5 +1,6 @@
+import siteMeta from '../site-meta.json';
 import { InternalLink as Link } from './components/common/InternalLink';
-import { ConceptForm } from './components/forms/ConceptForm';
+import { StartForm } from './components/forms/StartForm';
 import { siteConfig } from './config/site';
 import { faqs } from './data/faq';
 import {
@@ -9,111 +10,60 @@ import {
 } from './data/portfolio';
 import {
   notIncluded,
+  operatingOptions,
   ownershipItems,
   packageInclusions,
+  supportCovers,
+  supportExcludes,
 } from './data/pricing';
 import { clientChecklist, journey, processSteps } from './data/process';
+
+type RouteMeta = Record<string, { title: string; description: string }>;
+
+export const routeMeta: RouteMeta = siteMeta.routes;
 
 const navLinks = [
   { href: '/work', label: 'Work' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/process', label: 'Process' },
   { href: '/about', label: 'About' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
-export const routeMeta: Record<string, { title: string; description: string }> = {
-  '/': {
-    title: 'Kiera Gordon Digital | Websites for independent beauty businesses',
-    description:
-      'Graphic, booking-ready websites for salons and independent beauty businesses. Introductory launch price £149.',
-  },
-  '/work': {
-    title: 'Selected work | Kiera Gordon Digital',
-    description:
-      'Selected concept work from Kiera Gordon Digital, including the live Atelier Union nail salon website.',
-  },
-  '/work/atelier-union': {
-    title: 'Atelier Union case study | Kiera Gordon Digital',
-    description:
-      'An honest self-initiated concept showing how brand, treatments, proof and booking can work together for a beauty business.',
-  },
-  '/pricing': {
-    title: '£149 launch offer | Kiera Gordon Digital',
-    description:
-      'A focused launch offer for independent beauty business websites: one clear £149 price, no lock-in and no mandatory monthly contract.',
-  },
-  '/process': {
-    title: 'Process | Kiera Gordon Digital',
-    description:
-      'A simple concept-first website process for salons and appointment-led beauty businesses.',
-  },
-  '/about': {
-    title: 'About | Kiera Gordon Digital',
-    description:
-      'Kiera Gordon Digital is a small independent web-design studio focused on beauty businesses.',
-  },
-  '/concept': {
-    title: 'Get your free concept | Kiera Gordon Digital',
-    description:
-      'Send your current website, booking page or Instagram and see a personalised homepage direction before paying anything.',
-  },
-  '/faq': {
-    title: 'FAQ | Kiera Gordon Digital',
-    description:
-      'Answers about the £149 launch offer, ownership, booking systems, revisions, timings and launch support.',
-  },
-  '/privacy': {
-    title: 'Privacy | Kiera Gordon Digital',
-    description: 'Privacy information for Kiera Gordon Digital.',
-  },
-  '/terms': {
-    title: 'Terms | Kiera Gordon Digital',
-    description: 'Starter project terms for Kiera Gordon Digital.',
-  },
-};
-
 const offerFacts = [
-  { value: siteConfig.launchPrice, label: 'Launch price' },
-  { value: siteConfig.turnaroundShort, label: 'Typical turnaround' },
-  { value: siteConfig.ownershipLabel, label: 'Your website' },
-  { value: siteConfig.freeConceptPrice, label: 'To see your concept' },
+  { value: siteConfig.launchPrice, label: 'Website build' },
+  { value: '7-10', label: 'Working days' },
+  { value: siteConfig.ownershipLabel, label: 'Ownership' },
+  { value: '1 month', label: 'Tech support' },
 ];
 
 const trustItems = [
-  `${siteConfig.launchPrice} launch price`,
-  'See your concept first',
+  'Custom design',
+  'Mobile-first',
+  'Booking-ready',
   'Full ownership',
-  'No lock-in',
 ];
 
-const whatYouGet = [
-  'Mobile-first design',
-  'Treatments & pricing',
-  'Booking integration',
-  'Work / gallery',
-  'Reviews & trust',
-  'Team',
-  'Local SEO foundations',
-  'Content polish',
-  'Launch & domain connection',
-];
-
-const beautyNeeds = [
-  'Work and gallery',
-  'Treatment structure',
-  'Clear prices',
-  'Reviews and trust',
-  'Team and artist context',
+const buildHighlights = [
+  'Up to 5 pages',
+  'Custom direction',
+  'Mobile design',
+  'Treatments and prices',
+  'Gallery',
+  'Reviews',
+  'Team details',
   'Location and hours',
-  'Booking routes',
-  'Strong mobile UX',
+  'Contact routes',
+  'Basic SEO',
+  'Domain and SSL',
+  'Launch support',
 ];
 
 const builderDifferences = [
-  'You do not spend evenings choosing layouts.',
-  'You do not have to decide what pages need to exist.',
-  'You do not have to fix mobile spacing yourself.',
-  'You do not have to turn scattered content into a customer journey.',
+  'The customer journey is planned for you.',
+  'Your services, booking route and proof are structured together.',
+  'Mobile spacing, hierarchy and page flow are handled before launch.',
+  'You get a finished website instead of another tool to manage.',
 ];
 
 function cleanPath(path: string) {
@@ -125,22 +75,17 @@ function Eyebrow({ children }: { children: string }) {
 }
 
 function SectionHeader({
-  number,
   label,
   title,
   copy,
 }: {
-  number: string;
   label: string;
   title: string;
   copy?: string;
 }) {
   return (
     <div className="section-header">
-      <div className="section-marker">
-        <span>{number}</span>
-        <p>{label}</p>
-      </div>
+      <Eyebrow>{label}</Eyebrow>
       <div>
         <h2>{title}</h2>
         {copy ? <p>{copy}</p> : null}
@@ -152,8 +97,8 @@ function SectionHeader({
 function CtaRow({ invert = false }: { invert?: boolean }) {
   return (
     <div className="cta-row">
-      <Link className={`button ${invert ? 'light' : 'primary'}`} href="/concept">
-        {siteConfig.conceptCta}
+      <Link className={`button ${invert ? 'light' : 'primary'}`} href="/start">
+        {siteConfig.primaryCta}
         <span aria-hidden="true">-&gt;</span>
       </Link>
       <Link
@@ -166,7 +111,11 @@ function CtaRow({ invert = false }: { invert?: boolean }) {
   );
 }
 
-function ExternalProjectLink({ className = 'button primary' }: { className?: string }) {
+function ExternalProjectLink({
+  className = 'button primary',
+}: {
+  className?: string;
+}) {
   return (
     <a
       className={className}
@@ -183,9 +132,9 @@ function ExternalProjectLink({ className = 'button primary' }: { className?: str
 function Wordmark() {
   return (
     <Link className="wordmark" href="/" aria-label={`${siteConfig.name} home`}>
-      <span>KIERA</span>
-      <span>GORDON</span>
-      <span>DIGITAL</span>
+      <span>Kiera</span>
+      <span>Gordon</span>
+      <span>Digital</span>
     </Link>
   );
 }
@@ -205,8 +154,8 @@ function Header({ path }: { path: string }) {
           </Link>
         ))}
       </nav>
-      <Link className="header-cta" href="/concept">
-        Get your free concept
+      <Link className="header-cta" href="/start">
+        Start
       </Link>
       <details className="mobile-menu">
         <summary aria-label="Open menu">Menu</summary>
@@ -216,9 +165,8 @@ function Header({ path }: { path: string }) {
               {link.label}
             </Link>
           ))}
-          <Link href="/faq">FAQ</Link>
-          <Link className="button primary" href="/concept">
-            Get your free concept
+          <Link className="button primary" href="/start">
+            {siteConfig.primaryCta}
           </Link>
         </nav>
       </details>
@@ -227,6 +175,13 @@ function Header({ path }: { path: string }) {
 }
 
 function Footer() {
+  const footerLinks = [
+    ...navLinks,
+    { href: '/start', label: 'Start' },
+    { href: '/privacy', label: 'Privacy' },
+    { href: '/terms', label: 'Terms' },
+  ];
+
   return (
     <footer className="site-footer">
       <div className="footer-brand">
@@ -234,20 +189,15 @@ function Footer() {
         <p>{siteConfig.footerStatement}</p>
       </div>
       <nav aria-label="Footer navigation">
-        {[...navLinks, { href: '/faq', label: 'FAQ' }, { href: '/concept', label: 'Concept' }].map(
-          (link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ),
-        )}
+        {footerLinks.map((link) => (
+          <Link key={link.href} href={link.href}>
+            {link.label}
+          </Link>
+        ))}
       </nav>
       <div className="footer-contact">
         <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-        <div>
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
-        </div>
+        <p>{siteConfig.finalMicrocopy}</p>
       </div>
     </footer>
   );
@@ -265,13 +215,12 @@ function Hero() {
           <span>should too.</span>
         </h1>
         <p>
-          Professional, booking-ready websites for beauty businesses, without
-          agency prices or a complicated process.
+          Professional, booking-ready websites designed around independent
+          beauty businesses, with one clear introductory launch price.
         </p>
         <CtaRow />
-        <p className="microcopy">{siteConfig.microcopy}</p>
       </div>
-      <div className="hero-system" aria-label="Current launch offer facts">
+      <div className="hero-system" aria-label="Launch offer facts">
         {offerFacts.map((fact) => (
           <article key={fact.label} className="metric-panel">
             <strong>{fact.value}</strong>
@@ -293,29 +242,20 @@ function TrustStrip() {
   );
 }
 
-function InsightSection() {
+function JourneySection() {
   return (
-    <section className="section-pad insight-section">
+    <section className="section-pad">
       <SectionHeader
-        number="02"
-        label="Insight"
-        title="Your online presence should match the business you have built."
-        copy="Beauty customers rarely move in a straight line. The website has to connect attention, intent, confidence and booking."
+        label="Client journey"
+        title="How a new client finds you."
+        copy="A beauty website has to connect attention, intent, confidence and booking. The route should feel clear before a client ever messages you."
       />
       <div className="journey-grid">
         {journey.map((item, index) => (
-          <article key={item}>
+          <article key={item.title}>
             <span>{String(index + 1).padStart(2, '0')}</span>
-            <h3>{item}</h3>
-            <p>
-              {index === 0
-                ? 'Attention starts with the work.'
-                : index === 1
-                  ? 'Search creates intent.'
-                  : index === 2
-                    ? 'The site builds confidence.'
-                    : 'A clear route closes the gap.'}
-            </p>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
           </article>
         ))}
       </div>
@@ -326,13 +266,15 @@ function InsightSection() {
 function ProjectImage({
   screenshot,
   className = '',
+  loading = 'eager',
 }: {
   screenshot: (typeof atelierScreenshots)[number];
   className?: string;
+  loading?: 'eager' | 'lazy';
 }) {
   return (
     <figure className={`project-image ${className}`}>
-      <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
+      <img src={screenshot.src} alt={screenshot.alt} loading={loading} />
       <figcaption>{screenshot.label}</figcaption>
     </figure>
   );
@@ -343,7 +285,6 @@ function FeaturedWorkSection() {
     <section className="featured-work">
       <div className="featured-copy">
         <SectionHeader
-          number="03"
           label="Selected work"
           title="Atelier Union"
           copy={atelierUnionProject.shortTransparency}
@@ -364,35 +305,21 @@ function FeaturedWorkSection() {
         </dl>
         <div className="project-actions">
           <ExternalProjectLink />
-          <Link className="button secondary" href="/work/atelier-union">
+          <Link className="button outline-light" href="/work/atelier-union">
             Read case study
           </Link>
         </div>
       </div>
-      <div className="project-reveal">
-        <ProjectImage screenshot={atelierScreenshots[0]} className="wide" />
-        <ProjectImage screenshot={atelierScreenshots[1]} className="phone-shot" />
-        <ProjectImage screenshot={atelierScreenshots[2]} />
-      </div>
-    </section>
-  );
-}
-
-function WhyBeautySection() {
-  return (
-    <section className="section-pad split-section">
-      <SectionHeader
-        number="04"
-        label="Why beauty"
-        title="Beauty websites need to follow how customers actually choose."
-        copy={`Customers move from Instagram to Google to your website to ${siteConfig.bookingPlatforms.join(', ')} or the booking system you already use.`}
-      />
-      <div className="need-grid">
-        {beautyNeeds.map((item, index) => (
-          <span key={item}>
-            {String(index + 1).padStart(2, '0')} / {item}
-          </span>
-        ))}
+      <div className="project-layout">
+        <ProjectImage
+          screenshot={atelierScreenshots[0]}
+          className="flagship"
+          loading="eager"
+        />
+        <div className="portfolio-stack">
+          <ProjectImage screenshot={atelierScreenshots[1]} className="phone-shot" />
+          <ProjectImage screenshot={atelierScreenshots[2]} />
+        </div>
       </div>
     </section>
   );
@@ -402,12 +329,12 @@ function WhatYouGetSection() {
   return (
     <section className="section-pad">
       <SectionHeader
-        number="05"
         label="What you get"
         title="A complete launch website, not a template handover."
+        copy="The £149 website build is focused, but it is still a finished site with the essentials a beauty customer expects to find."
       />
       <div className="deliverables-grid">
-        {whatYouGet.map((item, index) => (
+        {buildHighlights.map((item, index) => (
           <article key={item}>
             <span>{String(index + 1).padStart(2, '0')}</span>
             <h3>{item}</h3>
@@ -418,33 +345,13 @@ function WhatYouGetSection() {
   );
 }
 
-function ConceptSection() {
-  return (
-    <section className="concept-band">
-      <div>
-        <Eyebrow>Free concept</Eyebrow>
-        <h2>See it before you commit to it.</h2>
-      </div>
-      <div>
-        <p>
-          Send your current website, booking page or social profile. We create a
-          personalised homepage direction around your business. If you decide
-          not to continue, you pay {siteConfig.freeConceptPrice}. If you want us
-          to build the site, the current launch price is {siteConfig.launchPrice}.
-        </p>
-        <CtaRow invert />
-      </div>
-    </section>
-  );
-}
-
 function ProcessSection() {
   return (
     <section className="process-section">
       <SectionHeader
-        number="06"
         label="Process"
-        title="Five steps. No forced call. No payment details to see the concept."
+        title="Five steps from enquiry to launch."
+        copy="The process keeps scope clear: send the basics, confirm the website build, review the work, then launch."
       />
       <div className="process-list">
         {processSteps.map((step) => (
@@ -463,16 +370,16 @@ function PricingSection() {
   return (
     <section className="pricing-section">
       <div className="price-lockup">
-        <Eyebrow>Launch offer</Eyebrow>
+        <Eyebrow>{siteConfig.offerLabel}</Eyebrow>
         <strong>{siteConfig.launchPrice}</strong>
-        <span>One-off</span>
+        <span>One-off website build</span>
         <p>{siteConfig.offerNote}</p>
       </div>
       <div className="price-copy">
         <h2>A professionally designed website for your beauty business.</h2>
         <p>
-          Built around your work, services and existing booking system, with one
-          clear introductory price and no mandatory monthly contract.
+          Built around your services, proof and booking route, with two included
+          revision rounds and one month of technical support after launch.
         </p>
         <div className="inclusion-list">
           {packageInclusions.slice(0, 10).map((item) => (
@@ -480,8 +387,36 @@ function PricingSection() {
           ))}
         </div>
         <Link className="button primary" href="/pricing">
-          View full scope
+          View pricing
         </Link>
+      </div>
+    </section>
+  );
+}
+
+function OptionsSection() {
+  return (
+    <section className="section-pad options-section">
+      <SectionHeader
+        label="After launch"
+        title="Choose how the site is run."
+        copy="The monthly plan is optional. You can keep your own booking provider and hosting route if that fits your business better."
+      />
+      <div className="option-grid">
+        {operatingOptions.map((option) => (
+          <article key={option.name}>
+            <div>
+              <h3>{option.name}</h3>
+              <strong>{option.price}</strong>
+              <p>{option.summary}</p>
+            </div>
+            <ul>
+              {option.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -506,27 +441,43 @@ function OwnershipSection() {
   );
 }
 
+function FounderPanel() {
+  if (siteConfig.founderImage) {
+    return (
+      <figure className="founder-photo">
+        <img src={siteConfig.founderImage} alt={`${siteConfig.founderName}, founder of ${siteConfig.name}`} />
+        <figcaption>{siteConfig.founderName}</figcaption>
+      </figure>
+    );
+  }
+
+  return (
+    <aside className="founder-note">
+      <Eyebrow>Founder-led</Eyebrow>
+      <p>
+        Kiera Gordon Digital is run directly by Kiera, so the website build
+        stays focused, practical and close to the business details you send.
+      </p>
+    </aside>
+  );
+}
+
 function AboutSection() {
   return (
     <section className="about-section">
       <div>
         <SectionHeader
-          number="07"
           label="About"
           title="A small independent studio, focused first on beauty businesses."
-          copy="Kiera Gordon Digital creates finished websites for appointment-led beauty businesses. The studio is intentionally small, practical and design-led."
+          copy="Kiera Gordon Digital creates finished websites for appointment-led salons, stylists, therapists and studios."
         />
         <p>
-          The aim is not to make every business look the same. The aim is to
-          understand what makes each salon, stylist, therapist or studio feel
-          credible in real life, then translate that into a clear digital
-          experience.
+          The work starts with how the business already feels in real life:
+          services, pricing, proof, location, opening hours and the booking
+          decision. The website is designed to make that clear online.
         </p>
       </div>
-      <figure className="founder-placeholder">
-        <span>KGD</span>
-        <figcaption>Founder image placeholder</figcaption>
-      </figure>
+      <FounderPanel />
     </section>
   );
 }
@@ -535,8 +486,8 @@ function BuilderComparisonSection() {
   return (
     <section className="builder-section">
       <div>
-        <Eyebrow>Builder vs finished result</Eyebrow>
-        <h2>A website builder gives you the tools. We give you the finished website.</h2>
+        <Eyebrow>Builder comparison</Eyebrow>
+        <h2>A website builder gives you the tools. KGD gives you the finished website.</h2>
       </div>
       <div className="comparison-list">
         {builderDifferences.map((item) => (
@@ -553,7 +504,6 @@ function FAQSection({ limit }: { limit?: number }) {
   return (
     <section className="faq-section">
       <SectionHeader
-        number="08"
         label="FAQ"
         title="Straight answers before you send anything."
       />
@@ -580,10 +530,10 @@ function FinalCTA() {
       <h2>
         Your business already looks good.
         <br />
-        Let’s make sure your website does too.
+        Make sure your website does too.
       </h2>
       <CtaRow invert />
-      <p>{siteConfig.microcopy}</p>
+      <p>{siteConfig.finalMicrocopy}</p>
     </section>
   );
 }
@@ -593,13 +543,12 @@ function HomePage() {
     <>
       <Hero />
       <TrustStrip />
-      <InsightSection />
+      <JourneySection />
       <FeaturedWorkSection />
-      <WhyBeautySection />
       <WhatYouGetSection />
-      <ConceptSection />
       <ProcessSection />
       <PricingSection />
+      <OptionsSection />
       <OwnershipSection />
       <AboutSection />
       <BuilderComparisonSection />
@@ -631,24 +580,33 @@ function WorkPage() {
   return (
     <>
       <PageHero
-        eyebrow="01 / Selected work"
+        eyebrow="Selected work"
         title="One honest concept, shown properly."
         copy={atelierUnionProject.transparency}
       />
       <section className="work-showcase">
         <div className="work-intro">
-          <h2>{atelierUnionProject.title}</h2>
-          <p>{atelierUnionProject.shortTransparency}</p>
+          <div>
+            <h2>{atelierUnionProject.title}</h2>
+            <p>{atelierUnionProject.shortTransparency}</p>
+          </div>
+          <dl className="project-meta light-meta">
+            <div>
+              <dt>Type</dt>
+              <dd>{atelierUnionProject.category}</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>{atelierUnionProject.label}</dd>
+            </div>
+          </dl>
           <ExternalProjectLink />
         </div>
-        <div className="gallery-grid">
-          {atelierScreenshots.map((screenshot, index) => (
-            <ProjectImage
-              key={screenshot.src}
-              screenshot={screenshot}
-              className={index === 0 || index === 3 ? 'wide' : ''}
-            />
-          ))}
+        <div className="gallery-grid composed">
+          <ProjectImage screenshot={atelierScreenshots[0]} className="wide" />
+          <ProjectImage screenshot={atelierScreenshots[1]} className="phone-shot" />
+          <ProjectImage screenshot={atelierScreenshots[2]} />
+          <ProjectImage screenshot={atelierScreenshots[4]} className="wide" />
         </div>
       </section>
       <FinalCTA />
@@ -660,7 +618,7 @@ function ProjectPage() {
   return (
     <>
       <PageHero
-        eyebrow="Case study / self-initiated concept"
+        eyebrow="Case study"
         title="Atelier Union"
         copy={atelierUnionProject.transparency}
       />
@@ -700,7 +658,7 @@ function ProjectPage() {
             <ProjectImage
               key={screenshot.src}
               screenshot={screenshot}
-              className={index === 2 ? 'wide' : ''}
+              className={index === 1 || index === 3 ? 'wide' : ''}
             />
           ))}
         </div>
@@ -724,8 +682,8 @@ function PricingPage() {
     <>
       <PageHero
         eyebrow="Pricing"
-        title={`${siteConfig.launchPrice} launch offer. One clear scope.`}
-        copy="The launch offer is intentionally focused: enough to create a strong, professional beauty website without drifting into a large custom project."
+        title={`${siteConfig.launchPrice} one-off website build.`}
+        copy="An introductory launch price while Kiera Gordon Digital builds its first real client portfolio."
       />
       <PricingSection />
       <section className="scope-section">
@@ -745,9 +703,28 @@ function PricingPage() {
             ))}
           </div>
           <p>
-            If something is outside scope, it can be discussed separately before
-            any additional work happens.
+            Work outside the agreed scope can be discussed and quoted before it
+            happens.
           </p>
+        </div>
+      </section>
+      <OptionsSection />
+      <section className="support-section">
+        <div>
+          <h2>Support covers</h2>
+          <div className="scope-list">
+            {supportCovers.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2>Support does not cover</h2>
+          <div className="scope-list muted">
+            {supportExcludes.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
         </div>
       </section>
       <OwnershipSection />
@@ -761,8 +738,8 @@ function ProcessPage() {
     <>
       <PageHero
         eyebrow="Process"
-        title="Concept first. Then a focused build."
-        copy="The process is built to remove risk before the project starts and keep the build controlled once it does."
+        title="A focused build, then launch."
+        copy="The project starts with your business details and stays scoped around a practical, booking-ready website."
       />
       <ProcessSection />
       <section className="checklist-section">
@@ -775,7 +752,7 @@ function ProcessPage() {
           ))}
         </div>
       </section>
-      <ConceptSection />
+      <FinalCTA />
     </>
   );
 }
@@ -786,39 +763,40 @@ function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A design studio, not another beauty brand."
-        copy="Kiera Gordon Digital is focused on helping independent beauty businesses look as credible online as they do in person."
+        copy="Kiera Gordon Digital helps independent beauty businesses look as credible online as they do in person."
       />
       <AboutSection />
-      <WhyBeautySection />
+      <JourneySection />
       <BuilderComparisonSection />
       <FinalCTA />
     </>
   );
 }
 
-function ConceptRequestPage() {
+function StartPage() {
   return (
     <>
       <PageHero
-        eyebrow="Free concept"
-        title="See what your business could look like."
-        copy="Send the basics. No payment details, no forced call and no obligation to continue."
+        eyebrow="Start your website"
+        title="Send the basics."
+        copy="Tell Kiera what your business is, where clients currently find you and what kind of website help you need."
       />
       <section className="form-section">
         <div>
-          <h2>Minimum information. Maximum usefulness.</h2>
+          <h2>Start with the details that matter.</h2>
           <p>
-            The free concept is a homepage direction, not a full website build.
-            It is designed to show how your business could be presented before
-            you decide whether to continue.
+            The form collects the information needed to review your enquiry and
+            reply with next steps for the £149 website build.
           </p>
           <ul>
+            <li>Your name and business name</li>
+            <li>Email address</li>
             <li>Current website, booking page or Instagram</li>
-            <li>Business name and contact email</li>
-            <li>Optional note if there is something specific to consider</li>
+            <li>Business type and project need</li>
+            <li>Optional message</li>
           </ul>
         </div>
-        <ConceptForm />
+        <StartForm />
       </section>
     </>
   );
@@ -830,7 +808,7 @@ function FAQPage() {
       <PageHero
         eyebrow="FAQ"
         title="Questions before you send your business."
-        copy="Straight answers about the launch price, scope, ownership, booking systems and what happens after launch."
+        copy="Answers about the £149 website build, optional Managed plan, ownership, booking, hosting, revisions and support."
       />
       <FAQSection />
       <FinalCTA />
@@ -844,7 +822,7 @@ function PrivacyPage() {
       <Eyebrow>Privacy</Eyebrow>
       <h1>Privacy notice</h1>
       <p>
-        Kiera Gordon Digital only asks for the information needed to respond to
+        Kiera Gordon Digital asks for the information needed to respond to
         enquiries and deliver website projects, such as your name, business
         details, email address and project information.
       </p>
@@ -853,6 +831,10 @@ function PrivacyPage() {
         is not sold. If a form provider, email service or hosting provider is
         used, information may pass through that service as part of normal
         website operation.
+      </p>
+      <p>
+        Project material you provide, such as copy, images, reviews and booking
+        links, is used to build and launch your website.
       </p>
       <p>{siteConfig.legalNote}</p>
     </main>
@@ -865,14 +847,25 @@ function TermsPage() {
       <Eyebrow>Terms</Eyebrow>
       <h1>Starter project terms</h1>
       <p>
-        The {siteConfig.launchPrice} launch offer covers a focused website
-        project for an independent beauty business within the scope described on
+        The {siteConfig.launchPrice} introductory website build covers a focused
+        website for an independent beauty business within the scope described on
         the pricing page.
       </p>
       <p>
-        Two revision rounds are included. Work outside the agreed scope is
-        quoted before it happens. The finished website belongs to the customer
-        once the project is complete and paid for.
+        The build includes up to 5 core pages, custom visual direction,
+        mobile-first design, basic SEO foundations, 2 revision rounds, launch
+        and 1 month of technical support for issues caused by the delivered
+        setup.
+      </p>
+      <p>
+        KGD Managed is optional at {siteConfig.managedPrice}. If you do not
+        choose it, your website can connect to your existing booking provider
+        and your own third-party hosting route.
+      </p>
+      <p>
+        You own your website, domain, content, images and business data. The KGD
+        platform, backend and owner area are licensed while subscribed to KGD
+        Managed and are not sold outright.
       </p>
       <p>{siteConfig.legalNote}</p>
     </main>
@@ -906,8 +899,8 @@ function getPage(path: string) {
       return <ProcessPage />;
     case '/about':
       return <AboutPage />;
-    case '/concept':
-      return <ConceptRequestPage />;
+    case '/start':
+      return <StartPage />;
     case '/faq':
       return <FAQPage />;
     case '/privacy':
@@ -931,7 +924,7 @@ export default function SiteApp({ path }: { path: string }) {
       {getPage(currentPath)}
       <Footer />
       <span className="sr-only" aria-live="polite">
-        {(routeMeta[currentPath]?.title || 'Page').replace(
+        {(routeMeta[currentPath]?.title || routeMeta['/404'].title).replace(
           ' | Kiera Gordon Digital',
           '',
         )}{' '}

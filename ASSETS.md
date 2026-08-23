@@ -1,12 +1,10 @@
 # Asset Notes
 
-The site intentionally avoids stock people and fake agency photography. Use real
-business assets when available.
+The site avoids stock people, generated portraits and fake agency photography. Use real business assets when available.
 
 ## Atelier Union Screenshots
 
-The current portfolio imagery was captured from the live Atelier Union website
-and saved in:
+The current portfolio imagery was captured from the live Atelier Union website and saved as optimized WebP files in:
 
 ```text
 public/projects/atelier-union/
@@ -15,13 +13,12 @@ public/projects/atelier-union/
 Captured files:
 
 ```text
-home-desktop.png
-home-mobile.png
-treatments-desktop.png
-lookbook-desktop.png
-lookbook-selected-oxblood.png
-booking-flow-desktop.png
-booking-mobile.png
+home-desktop.webp
+home-mobile.webp
+treatments-desktop.webp
+lookbook-desktop.webp
+booking-desktop.webp
+booking-mobile.webp
 ```
 
 Update labels and alt text in:
@@ -32,8 +29,7 @@ src/data/portfolio.ts
 
 ## Founder Image
 
-No founder photo is currently supplied. The live site uses a deliberate
-graphic/typographic panel instead of a stock portrait.
+No founder photo is currently supplied. The live site uses a founder-led text panel instead of a stock or generated portrait.
 
 When a real portrait exists, add it to:
 
@@ -47,10 +43,11 @@ Recommended size:
 1600 x 2000
 ```
 
+Then set `founderImage` in `src/config/site.ts`.
+
 ## Logo
 
-No final logo is currently supplied. The header uses a simple typography-led
-wordmark.
+No final logo is currently supplied. The header uses a typography-led wordmark.
 
 When a logo exists, add it to:
 
@@ -66,7 +63,7 @@ src/App.tsx
 
 ## Favicon
 
-The favicon placeholder is:
+The favicon is:
 
 ```text
 public/favicon.svg
@@ -82,8 +79,8 @@ The social preview card is:
 public/og.png
 ```
 
-Recommended replacement size:
+Recommended size:
 
 ```text
-1200 x 630 or larger landscape
+1200 x 630
 ```

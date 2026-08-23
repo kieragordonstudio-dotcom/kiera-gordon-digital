@@ -1,0 +1,66 @@
+{
+  "siteOrigin": "https://kiera-gordon-digital.onrender.com",
+  "enquiryTo": "hello@kieragordondigital.co.uk",
+  "ogImage": "/og.png",
+  "redirects": {
+    "/concept": "/start"
+  },
+  "sitemapRoutes": [
+    "/",
+    "/work",
+    "/work/atelier-union",
+    "/pricing",
+    "/process",
+    "/about",
+    "/start",
+    "/faq",
+    "/privacy",
+    "/terms"
+  ],
+  "routes": {
+    "/": {
+      "title": "Kiera Gordon Digital | Websites for independent beauty businesses",
+      "description": "Professional, booking-ready websites designed around independent beauty businesses, with one clear introductory launch price."
+    },
+    "/work": {
+      "title": "Selected work | Kiera Gordon Digital",
+      "description": "Selected concept work from Kiera Gordon Digital, including the live Atelier Union nail salon website."
+    },
+    "/work/atelier-union": {
+      "title": "Atelier Union case study | Kiera Gordon Digital",
+      "description": "A self-initiated salon website concept showing brand, treatments, trust, inspiration and booking working together."
+    },
+    "/pricing": {
+      "title": "Pricing | Kiera Gordon Digital",
+      "description": "The Kiera Gordon Digital offer: a £149 introductory website build, optional £15/month KGD Managed, and a clear own-hosting route."
+    },
+    "/process": {
+      "title": "Process | Kiera Gordon Digital",
+      "description": "A focused five-step website process for independent beauty businesses, from enquiry to launch."
+    },
+    "/about": {
+      "title": "About | Kiera Gordon Digital",
+      "description": "Kiera Gordon Digital is an independent web-design studio run by Kiera Gordon for salons and beauty businesses."
+    },
+    "/start": {
+      "title": "Start your website | Kiera Gordon Digital",
+      "description": "Send the basics about your beauty business and what you need. Kiera will review it and reply with next steps."
+    },
+    "/faq": {
+      "title": "FAQ | Kiera Gordon Digital",
+      "description": "Answers about the £149 website build, optional £15/month Managed plan, ownership, booking, hosting, revisions and support."
+    },
+    "/privacy": {
+      "title": "Privacy | Kiera Gordon Digital",
+      "description": "Privacy information for Kiera Gordon Digital enquiries and website projects."
+    },
+    "/terms": {
+      "title": "Terms | Kiera Gordon Digital",
+      "description": "Concise starter project terms for Kiera Gordon Digital website builds."
+    },
+    "/404": {
+      "title": "Page not found | Kiera Gordon Digital",
+      "description": "The requested Kiera Gordon Digital page could not be found."
+    }
+  }
+}
