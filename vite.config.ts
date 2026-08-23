@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/postcss';
-import vinext from 'vinext';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
@@ -10,5 +10,5 @@ export default defineConfig({
   server: isCodexSeatbeltSandbox
     ? { watch: { useFsEvents: false, usePolling: true } }
     : undefined,
-  plugins: [vinext()],
+  plugins: [react()],
 });

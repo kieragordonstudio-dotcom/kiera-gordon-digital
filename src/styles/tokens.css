@@ -6,8 +6,8 @@
   --color-dark: #171717;
   --color-accent: #c94f3d;
   --color-rule: rgba(17, 17, 17, 0.16);
-  --font-display: var(--font-instrument-serif), Georgia, serif;
-  --font-body: var(--font-manrope), Inter, Arial, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: Manrope, Inter, Arial, sans-serif;
   --radius-small: 4px;
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   --page-gutter: clamp(20px, 4vw, 64px);

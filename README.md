@@ -42,7 +42,12 @@ The default service name is `kiera-gordon-digital`, so the expected Render URL i
 https://kiera-gordon-digital.onrender.com
 ```
 
-If Render assigns a different URL, update `metadataBase` in `app/layout.tsx`.
+If Render assigns a different URL, update the canonical and social metadata in
+`index.html`.
+
+The deployed app is a Vite static build served by `server.mjs`, which falls
+back to `dist/index.html` for clean URLs such as `/pricing` and
+`/work/atelier-union`.
 
 ## Where To Edit Things
 
