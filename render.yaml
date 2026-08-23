@@ -4,8 +4,8 @@ services:
     runtime: node
     plan: free
     region: frankfurt
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
-    startCommand: corepack enable && pnpm run start
+    buildCommand: npm install -g pnpm@11.19.0 && pnpm install --frozen-lockfile && pnpm run build
+    startCommand: pnpm run start
     healthCheckPath: /
     autoDeploy: true
     envVars:
