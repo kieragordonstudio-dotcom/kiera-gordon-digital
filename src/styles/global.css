@@ -243,13 +243,16 @@
 }
 
 .hero-system {
+  align-self: stretch;
   background:
     linear-gradient(90deg, rgba(49, 92, 255, 0.08) 1px, transparent 1px),
     linear-gradient(0deg, rgba(49, 92, 255, 0.08) 1px, transparent 1px),
     var(--color-surface-blue);
   background-size: 38px 38px;
+  box-shadow: 0 0 0 1px rgba(49, 92, 255, 0.24);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin: 30px max(24px, var(--page-gutter)) 30px 28px;
   min-width: 0;
 }
 
@@ -258,9 +261,9 @@
   border-bottom: 1px solid rgba(49, 92, 255, 0.42);
   border-right: 1px solid rgba(49, 92, 255, 0.42);
   display: grid;
-  min-height: 190px;
+  min-height: 168px;
   min-width: 0;
-  padding: 28px;
+  padding: 24px;
 }
 
 .metric-panel strong {
@@ -328,6 +331,7 @@
 }
 
 .section-header h2,
+.faq-content h2,
 .pricing-section h2,
 .about-section h2,
 .builder-section h2,
@@ -412,8 +416,8 @@
   background: var(--color-text);
   color: white;
   display: grid;
-  gap: 52px;
-  grid-template-columns: minmax(280px, 0.35fr) minmax(0, 1fr);
+  gap: 72px;
+  grid-template-columns: minmax(280px, 0.36fr) minmax(0, 0.92fr);
 }
 
 .featured-work .section-header,
@@ -466,8 +470,76 @@
 .project-layout {
   align-items: start;
   display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr);
+  justify-items: end;
+  min-width: 0;
+}
+
+.browser-preview {
+  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  color: var(--color-text);
+  display: block;
+  max-width: 920px;
+  min-width: 0;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 180ms var(--ease-precise);
+  width: min(100%, 920px);
+}
+
+.browser-preview:hover {
+  transform: translateY(-3px);
+}
+
+.browser-bar {
+  align-items: center;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-rule);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto minmax(0, 1fr);
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.browser-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-controls span {
+  background: var(--color-rule);
+  border-radius: 50%;
+  display: block;
+  height: 8px;
+  width: 8px;
+}
+
+.browser-controls span:first-child {
+  background: var(--color-accent);
+}
+
+.browser-url {
+  border-left: 1px solid var(--color-rule);
+  color: var(--color-muted);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding-left: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browser-preview img {
+  aspect-ratio: 16 / 10;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
 }
 
 .portfolio-stack,
@@ -733,12 +805,16 @@
 .founder-photo {
   background: white;
   border: 1px solid var(--color-rule);
+  justify-self: end;
+  max-width: 310px;
+  width: 100%;
 }
 
 .founder-photo img {
   aspect-ratio: 4 / 5;
   display: block;
   object-fit: cover;
+  object-position: 50% 42%;
   width: 100%;
 }
 
@@ -774,9 +850,21 @@
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.46fr);
 }
 
+.faq-layout {
+  border-top: 1px solid var(--color-text);
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(150px, 0.25fr) minmax(0, 1fr);
+  padding-top: 22px;
+}
+
+.faq-layout > .eyebrow {
+  margin: 0;
+}
+
 .faq-list {
   border-top: 1px solid var(--color-text);
-  margin: 42px 0 28px;
+  margin: 28px 0;
 }
 
 .faq-list details {
@@ -1038,7 +1126,7 @@
   }
 
   .metric-panel strong {
-    font-size: 3.4rem;
+    font-size: 3.2rem;
   }
 }
 
@@ -1048,7 +1136,7 @@
   }
 
   .metric-panel strong {
-    font-size: 3.4rem;
+    font-size: 2.85rem;
   }
 
   .page-hero h1,
@@ -1057,6 +1145,7 @@
   }
 
   .section-header h2,
+  .faq-content h2,
   .pricing-section h2,
   .about-section h2,
   .builder-section h2,
@@ -1100,6 +1189,10 @@
     border-right: 0;
   }
 
+  .hero-system {
+    margin: 0 var(--page-gutter) 46px;
+  }
+
   .hero-system,
   .journey-grid,
   .deliverables-grid,
@@ -1132,6 +1225,11 @@
   .work-intro {
     gap: 22px;
   }
+
+  .browser-preview {
+    justify-self: start;
+    width: min(100%, 860px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -1156,8 +1254,14 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .section-header {
+  .section-header,
+  .faq-layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .founder-photo {
+    justify-self: start;
+    max-width: 280px;
   }
 }
 
@@ -1170,6 +1274,7 @@
   }
 
   .section-header h2,
+  .faq-content h2,
   .pricing-section h2,
   .about-section h2,
   .builder-section h2,
@@ -1256,6 +1361,7 @@
   }
 
   .section-header h2,
+  .faq-content h2,
   .pricing-section h2,
   .about-section h2,
   .builder-section h2,
@@ -1303,12 +1409,21 @@
   }
 
   .hero-system {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 16px 34px;
   }
 
   .metric-panel {
-    min-height: 136px;
-    padding: 22px;
+    min-height: 128px;
+    padding: 18px;
+  }
+
+  .metric-panel strong {
+    font-size: 3rem;
+  }
+
+  .metric-panel span {
+    font-size: 0.66rem;
   }
 
   .journey-grid article,
@@ -1326,6 +1441,10 @@
   .wordmark {
     font-size: 0.7rem;
   }
+
+  .founder-photo {
+    max-width: 240px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -1335,7 +1454,17 @@
     font-size: 2.35rem;
   }
 
+  .metric-panel {
+    padding: 16px;
+  }
+
+  .metric-panel strong {
+    font-size: 2.5rem;
+    line-height: 0.95;
+  }
+
   .section-header h2,
+  .faq-content h2,
   .pricing-section h2,
   .about-section h2,
   .builder-section h2,

@@ -117,7 +117,7 @@ export function StartForm() {
           state: 'error',
           message:
             result.error ||
-            'The enquiry could not be sent. Please email Kiera directly.',
+            `The enquiry could not be sent. Please email ${siteConfig.email} directly.`,
         });
         return;
       }
@@ -134,7 +134,7 @@ export function StartForm() {
       setStatus({
         state: 'error',
         message:
-          'The enquiry could not be sent. Please email Kiera directly.',
+          `The enquiry could not be sent. Please email ${siteConfig.email} directly.`,
       });
     }
   }

@@ -45,7 +45,7 @@ src/config/site.ts
 Change:
 
 ```ts
-email: 'hello@kieragordondigital.co.uk',
+email: 'kieragordondigital@gmail.com',
 phone: '',
 ```
 
@@ -75,7 +75,7 @@ Open:
 site-meta.json
 ```
 
-This file controls the site origin, sitemap routes, route metadata and the retired enquiry-route redirect.
+This file controls the site origin, sitemap routes, route metadata and redirects.
 
 ## Connect The Enquiry Form
 
@@ -93,7 +93,7 @@ ENQUIRY_FROM
 ENQUIRY_TO
 ```
 
-`ENQUIRY_TO` is optional and defaults to `hello@kieragordondigital.co.uk`.
+`ENQUIRY_TO` is optional and defaults to `kieragordondigital@gmail.com`.
 
 ## Change Colours
 
@@ -120,13 +120,13 @@ Open `src/App.tsx`, find `function Wordmark()` and replace the text wordmark wit
 Add the portrait to:
 
 ```text
-public/founder.jpg
+public/founder-kiera-gordon.webp
 ```
 
 Then open `src/config/site.ts` and set:
 
 ```ts
-founderImage: '/founder.jpg',
+founderImage: '/founder-kiera-gordon.webp',
 ```
 
 Only use a real supplied portrait.

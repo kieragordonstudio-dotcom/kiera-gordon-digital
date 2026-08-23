@@ -1,7 +1,7 @@
 export const packageInclusions = [
   'Up to 5 core pages',
-  'Custom visual direction around your business',
-  'Mobile-first responsive design',
+  'Custom web design',
+  'Designed for desktop and mobile',
   'Treatments, services and prices',
   'Gallery of your work',
   'Customer-supplied reviews or testimonials',
@@ -50,7 +50,7 @@ export const operatingOptions = [
     name: 'Your own hosting',
     price: 'Hosting paid separately',
     summary:
-      'Your website connects to your existing booking provider and your chosen hosting.',
+      'Your website connects to your existing booking provider and separate hosting.',
     items: [
       'Use Fresha, Booksy, Treatwell or another provider',
       'No KGD backend or owner dashboard',

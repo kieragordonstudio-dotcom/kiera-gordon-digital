@@ -46,7 +46,7 @@ export const atelierUnionProject = {
   transparency:
     'Atelier Union is a self-initiated concept project, not a paying salon client.',
   shortTransparency:
-    'A self-initiated concept showing how a beauty website can make treatments, proof and booking feel clear.',
+    'A self-initiated concept project showing treatments, prices, work and booking in one clear salon website.',
   description:
     'A premium nail salon experience that feels desirable while remaining extremely easy to understand and book.',
   brief:

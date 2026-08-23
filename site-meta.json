@@ -1,10 +1,8 @@
 {
   "siteOrigin": "https://kiera-gordon-digital.onrender.com",
-  "enquiryTo": "hello@kieragordondigital.co.uk",
+  "enquiryTo": "kieragordondigital@gmail.com",
   "ogImage": "/og.png",
-  "redirects": {
-    "/concept": "/start"
-  },
+  "redirects": {},
   "sitemapRoutes": [
     "/",
     "/work",
@@ -20,11 +18,11 @@
   "routes": {
     "/": {
       "title": "Kiera Gordon Digital | Websites for independent beauty businesses",
-      "description": "Professional, booking-ready websites designed around independent beauty businesses, with one clear introductory launch price."
+      "description": "Complete custom websites for independent beauty businesses, with one clear introductory launch price."
     },
     "/work": {
       "title": "Selected work | Kiera Gordon Digital",
-      "description": "Selected concept work from Kiera Gordon Digital, including the live Atelier Union nail salon website."
+      "description": "Selected work from Kiera Gordon Digital, including the live Atelier Union nail salon website."
     },
     "/work/atelier-union": {
       "title": "Atelier Union case study | Kiera Gordon Digital",
@@ -36,7 +34,7 @@
     },
     "/process": {
       "title": "Process | Kiera Gordon Digital",
-      "description": "A focused five-step website process for independent beauty businesses, from enquiry to launch."
+      "description": "A clear five-step website process for independent beauty businesses, from enquiry to launch."
     },
     "/about": {
       "title": "About | Kiera Gordon Digital",

@@ -318,7 +318,7 @@ async function handleEnquiry(request, response) {
     sendJson(response, request, 503, {
       ok: false,
       error:
-        'Email delivery is not configured yet. Please email hello@kieragordondigital.co.uk directly.',
+        `Email delivery is not configured yet. Please email ${siteMeta.enquiryTo} directly.`,
     });
     return;
   }
@@ -345,7 +345,7 @@ async function handleEnquiry(request, response) {
     sendJson(response, request, 502, {
       ok: false,
       error:
-        'Email delivery failed. Please email hello@kieragordondigital.co.uk directly.',
+        `Email delivery failed. Please email ${siteMeta.enquiryTo} directly.`,
     });
     return;
   }

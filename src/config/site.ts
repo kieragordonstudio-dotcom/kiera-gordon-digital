@@ -2,8 +2,8 @@ export const siteConfig = {
   name: 'Kiera Gordon Digital',
   strapline: 'Websites for independent beauty businesses.',
   description:
-    'Professional, booking-ready websites designed around independent beauty businesses.',
-  email: 'hello@kieragordondigital.co.uk',
+    'Complete custom websites for independent beauty businesses.',
+  email: 'kieragordondigital@gmail.com',
   phone: '',
   founderName: 'Kiera Gordon',
   launchPrice: '£149',
@@ -28,6 +28,6 @@ export const siteConfig = {
   socialLinks: [] as Array<{ label: string; href: string }>,
   atelierUnionLiveUrl: 'https://atelier-union.onrender.com/',
   formEndpoint: '/api/enquiry',
-  founderImage: '',
+  founderImage: '/founder-kiera-gordon.webp',
   footerStatement: 'Websites for independent beauty businesses.',
 };

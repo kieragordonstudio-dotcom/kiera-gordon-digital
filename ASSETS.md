@@ -29,12 +29,18 @@ src/data/portfolio.ts
 
 ## Founder Image
 
-No founder photo is currently supplied. The live site uses a founder-led text panel instead of a stock or generated portrait.
-
-When a real portrait exists, add it to:
+The real founder portrait is supplied and optimized as WebP:
 
 ```text
-public/founder.jpg
+public/founder-kiera-gordon.webp
+```
+
+The site does not use a stock or generated portrait.
+
+If the portrait is replaced, use a real supplied image and update:
+
+```text
+src/config/site.ts
 ```
 
 Recommended size:
@@ -43,7 +49,7 @@ Recommended size:
 1600 x 2000
 ```
 
-Then set `founderImage` in `src/config/site.ts`.
+Then set `founderImage` to the replacement public asset path.
 
 ## Logo
 

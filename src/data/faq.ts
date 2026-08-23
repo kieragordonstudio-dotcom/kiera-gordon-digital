@@ -4,12 +4,12 @@ export const faqs = [
   {
     question: 'Why is the website £149?',
     answer:
-      '£149 is the introductory launch price while Kiera Gordon Digital builds its first portfolio of real client websites. It is a focused offer, not a budget positioning.',
+      '£149 is the introductory launch price while Kiera Gordon Digital builds its first portfolio of real client websites.',
   },
   {
     question: 'What do I get for £149?',
     answer:
-      'A professional website with up to 5 core pages, custom visual direction, mobile-first design, treatments and prices, gallery of work, customer-supplied reviews, team details where relevant, location, hours, contact information, basic SEO foundations, metadata, domain connection, launch, 2 revision rounds and 1 month technical support after launch.',
+      'A complete custom website with up to 5 core pages, custom web design, desktop and mobile layouts, treatments and prices, gallery of work, supplied reviews, team details where relevant, location, hours, contact information, basic SEO foundations, metadata, domain connection, launch, 2 revision rounds and 1 month technical support after launch.',
   },
   {
     question: 'Do I own the website?',
@@ -72,7 +72,7 @@ export const faqs = [
   },
   {
     question: 'How many revisions are included?',
-    answer: 'Two focused revision rounds are included in the £149 website build.',
+    answer: 'Two revision rounds are included in the £149 website build.',
   },
   {
     question: 'What does the one month technical support cover?',

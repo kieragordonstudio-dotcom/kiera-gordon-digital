@@ -42,7 +42,7 @@ and start with:
 pnpm run start
 ```
 
-The server handles clean routes, `/sitemap.xml`, `/robots.txt`, real 404 responses and the retired enquiry-route redirect to `/start`.
+The server handles clean routes, `/sitemap.xml`, `/robots.txt` and real 404 responses.
 
 ## Enquiry Email
 
@@ -63,7 +63,7 @@ ENQUIRY_TO
 `ENQUIRY_TO` is optional and defaults to:
 
 ```text
-hello@kieragordondigital.co.uk
+kieragordondigital@gmail.com
 ```
 
 If `RESEND_API_KEY` or `ENQUIRY_FROM` is missing, the endpoint returns a clear configuration error instead of showing fake success.
@@ -120,10 +120,10 @@ Do not add fake clients, testimonials or performance numbers. Mark self-initiate
 
 ## Founder Image
 
-No founder image is currently supplied. The site does not use a stock or generated portrait.
+The real founder portrait is stored at `public/founder-kiera-gordon.webp`. The site does not use a stock or generated portrait.
 
-When a real portrait exists, add it to `public/founder.jpg` and set this in `src/config/site.ts`:
+The portrait is connected in `src/config/site.ts`:
 
 ```ts
-founderImage: '/founder.jpg',
+founderImage: '/founder-kiera-gordon.webp',
 ```

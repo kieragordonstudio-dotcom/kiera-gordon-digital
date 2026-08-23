@@ -1,7 +1,7 @@
 export const processSteps = [
   {
     step: '01',
-    title: 'Send your business',
+    title: 'Send the details',
     copy: 'Share your current website, booking page, Instagram or business details.',
   },
   {
