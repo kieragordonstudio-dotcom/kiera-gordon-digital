@@ -44,14 +44,14 @@ export const journey = [
   },
   {
     title: 'Google',
-    copy: 'They search for you.',
+    copy: 'They search your business.',
   },
   {
-    title: 'Website',
-    copy: 'They check your treatments, prices, work and reviews.',
+    title: 'Your website',
+    copy: 'They check your work, treatments and prices.',
   },
   {
     title: 'Booking',
-    copy: 'They choose an appointment.',
+    copy: 'They book.',
   },
 ];

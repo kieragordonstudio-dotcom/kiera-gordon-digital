@@ -39,7 +39,7 @@ export const atelierUnionProject = {
   number: '01',
   category: 'Nail salon concept',
   location: 'Aberdeen',
-  label: 'Self-initiated concept project',
+  label: 'SELF-INITIATED CONCEPT PROJECT',
   listingLabel: 'Selected work',
   subtitle: 'Nail salon concept · Aberdeen',
   liveUrl: siteConfig.atelierUnionLiveUrl,

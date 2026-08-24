@@ -32,15 +32,16 @@ const navLinks = [
 
 const offerFacts = [
   { value: siteConfig.launchPrice, label: 'Website build' },
-  { value: '7-10', label: 'Working days' },
+  { value: '7–14', label: 'Working days' },
   { value: siteConfig.ownershipLabel, label: 'Ownership' },
   { value: '1 month', label: 'Tech support' },
 ];
 
 const buildHighlights = [
-  'Up to 5 pages',
+  'Up to 6 core pages',
   'Custom web design',
   'Desktop + mobile design',
+  'Built around your business',
   'Treatments and prices',
   'Gallery',
   'Reviews',
@@ -50,6 +51,29 @@ const buildHighlights = [
   'Basic SEO',
   'Domain and SSL',
   'Launch support',
+];
+
+const discoverySteps = [
+  {
+    number: '01',
+    title: 'Instagram',
+    copy: 'They see your work.',
+  },
+  {
+    number: '02',
+    title: 'Google',
+    copy: 'They search your business.',
+  },
+  {
+    number: '03',
+    title: 'Your website',
+    copy: 'They check your work, treatments and prices.',
+  },
+  {
+    number: '04',
+    title: 'Booking',
+    copy: 'They book.',
+  },
 ];
 
 function cleanPath(path: string) {
@@ -170,20 +194,19 @@ function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="footer-brand">
-        <Wordmark />
-        <p>{siteConfig.footerStatement}</p>
-      </div>
-      <nav aria-label="Footer navigation">
+      <nav className="footer-nav" aria-label="Footer navigation">
         {footerLinks.map((link) => (
           <Link key={link.href} href={link.href}>
             {link.label}
           </Link>
         ))}
       </nav>
-      <div className="footer-contact">
+      <div className="footer-bottom">
+        <div className="footer-brand-text">
+          <strong>{siteConfig.name}</strong>
+          <p>{siteConfig.footerStatement}</p>
+        </div>
         <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-        <p>{siteConfig.finalMicrocopy}</p>
       </div>
     </footer>
   );
@@ -215,6 +238,27 @@ function Hero() {
         ))}
       </div>
     </main>
+  );
+}
+
+function DiscoverySection() {
+  return (
+    <section className="discovery-section">
+      <SectionHeader
+        label="How clients find you"
+        title="How clients find you."
+        copy="Your website connects interest with booking."
+      />
+      <div className="discovery-grid">
+        {discoverySteps.map((step) => (
+          <article key={step.number}>
+            <span>{step.number}</span>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -285,8 +329,11 @@ function FeaturedWorkSection() {
           </div>
         </dl>
         <div className="project-actions">
-          <ExternalProjectLink />
-          <Link className="button outline-light" href="/work/atelier-union">
+          <ExternalProjectLink className="button primary featured-live-button" />
+          <Link
+            className="button outline-light quiet-case-link"
+            href="/work/atelier-union"
+          >
             Read case study
           </Link>
         </div>
@@ -304,7 +351,7 @@ function WhatYouGetSection() {
       <SectionHeader
         label="What you get"
         title="A complete custom website, built around your business."
-        copy="Custom web design for desktop and mobile, with your services, prices, work, reviews and booking brought together properly."
+        copy="Custom web design for desktop and mobile, designed around your business, style, services and customers."
       />
       <div className="deliverables-grid">
         {buildHighlights.map((item, index) => (
@@ -339,7 +386,7 @@ function ProcessSection() {
   );
 }
 
-function PricingSection() {
+function PricingSection({ showLink = true }: { showLink?: boolean }) {
   return (
     <section className="pricing-section">
       <div className="price-lockup">
@@ -351,17 +398,20 @@ function PricingSection() {
       <div className="price-copy">
         <h2>A complete custom website for your beauty business.</h2>
         <p>
-          Built around your services, prices, work, reviews and booking route,
-          with two revision rounds and one month of technical support included.
+          Built around your business, content, style, services, customers and
+          booking route, with two revision rounds and one month of technical
+          support after launch included.
         </p>
         <div className="inclusion-list">
           {packageInclusions.slice(0, 10).map((item) => (
             <span key={item}>{item}</span>
           ))}
         </div>
-        <Link className="button primary" href="/pricing">
-          View pricing
-        </Link>
+        {showLink ? (
+          <Link className="button primary" href="/pricing">
+            View pricing
+          </Link>
+        ) : null}
       </div>
     </section>
   );
@@ -502,6 +552,7 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <DiscoverySection />
       <FeaturedWorkSection />
       <WhatYouGetSection />
       <ProcessSection />
@@ -559,11 +610,11 @@ function WorkPage() {
           </dl>
           <ExternalProjectLink />
         </div>
-        <div className="gallery-grid composed">
-          <ProjectImage screenshot={atelierScreenshots[0]} className="wide" />
+        <div className="gallery-grid work-collage">
+          <ProjectImage screenshot={atelierScreenshots[0]} />
           <ProjectImage screenshot={atelierScreenshots[1]} className="phone-shot" />
           <ProjectImage screenshot={atelierScreenshots[2]} />
-          <ProjectImage screenshot={atelierScreenshots[4]} className="wide" />
+          <ProjectImage screenshot={atelierScreenshots[4]} />
         </div>
       </section>
       <FinalCTA />
@@ -640,9 +691,9 @@ function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title={`${siteConfig.launchPrice} one-off website build.`}
-        copy="An introductory launch price while Kiera Gordon Digital builds its first real client portfolio."
+        copy="An introductory launch price while Kiera Gordon Digital builds its portfolio of client websites."
       />
-      <PricingSection />
+      <PricingSection showLink={false} />
       <section className="scope-section">
         <div>
           <h2>Included</h2>
@@ -668,15 +719,26 @@ function PricingPage() {
       <OptionsSection />
       <section className="support-section">
         <div>
-          <h2>Support covers</h2>
+          <h2>First month support</h2>
+          <p>
+            Every £149 website includes 1 month of technical support after
+            launch for issues attributable to the delivered website or setup.
+          </p>
+        </div>
+        <div>
+          <h2>KGD Managed support</h2>
+          <p>
+            KGD Managed clients receive ongoing managed technical support for
+            the website, hosting, backend and platform while subscribed.
+          </p>
           <div className="scope-list">
             {supportCovers.map((item) => (
               <span key={item}>{item}</span>
             ))}
           </div>
         </div>
-        <div>
-          <h2>Support does not cover</h2>
+        <div className="support-wide">
+          <h2>Managed support does not include</h2>
           <div className="scope-list muted">
             {supportExcludes.map((item) => (
               <span key={item}>{item}</span>
@@ -733,7 +795,7 @@ function StartPage() {
     <>
       <PageHero
         eyebrow="Start your website"
-        title="Send the basics."
+        title="Send your details."
         copy="Tell Kiera what your business is and what kind of website help you need."
       />
       <section className="form-section">
@@ -807,7 +869,7 @@ function TermsPage() {
         scope described on the pricing page.
       </p>
       <p>
-        The build includes up to 5 core pages, custom web design, desktop and
+        The build includes up to 6 core pages, custom web design, desktop and
         mobile layouts, basic SEO foundations, 2 revision rounds, launch
         and 1 month of technical support for issues caused by the delivered
         setup.

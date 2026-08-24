@@ -1,7 +1,8 @@
 export const packageInclusions = [
-  'Up to 5 core pages',
+  'Up to 6 core pages',
   'Custom web design',
   'Designed for desktop and mobile',
+  'Designed around your business, style, services and customers',
   'Treatments, services and prices',
   'Gallery of your work',
   'Customer-supplied reviews or testimonials',
@@ -38,12 +39,14 @@ export const operatingOptions = [
   {
     name: 'KGD Managed',
     price: '£15 / month',
-    summary: 'Hosting, KGD booking system and owner platform included.',
+    summary:
+      'Managed hosting, KGD booking system, backend, owner area and technical operation included.',
     items: [
       'KGD-managed website hosting',
       'KGD booking system',
       'Owner dashboard / owner area',
       'Managed backend and platform infrastructure',
+      'Ongoing managed technical support while subscribed',
     ],
   },
   {
@@ -71,22 +74,22 @@ export const ownershipItems = [
 ];
 
 export const supportCovers = [
-  'Website bugs',
-  'Broken links',
-  'Responsive or layout defects',
-  'Form defects',
-  'Initial domain or SSL issues caused by the setup',
-  'Booking integration issues caused by the implementation',
+  'Website bugs attributable to the site',
+  'Hosting, uptime or deployment issues inside KGD control',
+  'Website crashes',
+  'SSL or setup issues caused by the KGD setup',
+  'Booking or backend functionality bugs',
   'Browser or device bugs attributable to the site',
 ];
 
 export const supportExcludes = [
   'Unlimited edits',
-  'Content changes',
-  'Redesign',
+  'Routine content changes',
+  'Redesigns',
   'New pages',
   'New features or integrations',
-  'Ongoing SEO, marketing or social media',
-  'Branding or photography',
-  'Third-party IT or email support',
+  'Marketing',
+  'Ongoing SEO',
+  'Branding',
+  'Photography',
 ];

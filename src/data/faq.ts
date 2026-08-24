@@ -4,12 +4,12 @@ export const faqs = [
   {
     question: 'Why is the website £149?',
     answer:
-      '£149 is the introductory launch price while Kiera Gordon Digital builds its first portfolio of real client websites.',
+      '£149 is the introductory launch price while Kiera Gordon Digital builds its portfolio of client websites.',
   },
   {
     question: 'What do I get for £149?',
     answer:
-      'A complete custom website with up to 5 core pages, custom web design, desktop and mobile layouts, treatments and prices, gallery of work, supplied reviews, team details where relevant, location, hours, contact information, basic SEO foundations, metadata, domain connection, launch, 2 revision rounds and 1 month technical support after launch.',
+      'A complete custom website with up to 6 core pages, custom web design built around your business, style, services and customers, desktop and mobile layouts, treatments and prices, gallery of work, supplied reviews, team details where relevant, location, hours, contact information, basic SEO foundations, metadata, domain connection, launch, 2 revision rounds and 1 month technical support after launch.',
   },
   {
     question: 'Do I own the website?',
@@ -24,15 +24,15 @@ export const faqs = [
   {
     question: 'What is KGD Managed?',
     answer:
-      'KGD Managed is the optional £15/month plan for businesses that want hosting, KGD booking and the owner platform included.',
+      'KGD Managed is the optional £15 / month plan for businesses that want managed hosting, the KGD booking system, backend, owner dashboard or owner area, technical operation and ongoing managed technical support while subscribed.',
   },
   {
-    question: 'What does £15/month include?',
+    question: 'What does £15 / month include?',
     answer:
-      'It includes KGD-managed website hosting, the KGD booking system, owner dashboard or owner area, connected website/backend functionality and the managed technical infrastructure needed to run the KGD platform.',
+      'It includes KGD-managed website hosting, the KGD booking system, owner dashboard or owner area, connected website/backend functionality, managed technical infrastructure and ongoing technical support for the managed website/platform while subscribed.',
   },
   {
-    question: 'Do I have to pay £15/month?',
+    question: 'Do I have to pay £15 / month?',
     answer:
       'No. KGD Managed is optional. If you do not choose it, your website can connect to your existing booking provider and your own hosting.',
   },
@@ -77,12 +77,12 @@ export const faqs = [
   {
     question: 'What does the one month technical support cover?',
     answer:
-      'It covers reasonable technical issues attributable to the delivered website or setup, such as website bugs, broken links, responsive defects, form defects, initial domain or SSL issues caused by the setup, booking integration issues caused by the implementation and browser/device bugs attributable to the site.',
+      'Every £149 website includes 1 month of technical support after launch for reasonable technical issues attributable to the delivered website or setup, such as site bugs, responsive defects, form defects, initial domain or SSL issues caused by the setup and booking integration issues caused by the implementation.',
   },
   {
     question: 'What happens after that month?',
     answer:
-      'No ongoing support is automatically included after the first month. Extra work, changes or support can be quoted separately.',
+      'No ongoing support is automatically included after the first month unless you choose KGD Managed. Extra work, routine content changes, new pages, new features or redesigns can be quoted separately.',
   },
   {
     question: 'Can you use my existing photos?',

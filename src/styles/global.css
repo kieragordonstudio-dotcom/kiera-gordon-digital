@@ -180,11 +180,11 @@
 .project-meta dt,
 .process-list span,
 .journey-grid span,
+.discovery-grid span,
 .deliverables-grid span,
 .need-grid span,
 .principle-grid span,
-.site-footer a,
-.site-footer p {
+.footer-nav a {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
@@ -252,8 +252,10 @@
   box-shadow: 0 0 0 1px rgba(49, 92, 255, 0.24);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  margin: 30px max(24px, var(--page-gutter)) 30px 28px;
+  justify-self: center;
+  margin: 30px 0;
   min-width: 0;
+  width: min(calc(100% - clamp(48px, 5vw, 72px)), 430px);
 }
 
 .metric-panel {
@@ -263,16 +265,18 @@
   display: grid;
   min-height: 168px;
   min-width: 0;
-  padding: 24px;
+  padding: clamp(18px, 1.6vw, 24px);
 }
 
 .metric-panel strong {
   color: var(--color-accent);
   display: block;
-  font-size: 4.2rem;
+  font-size: clamp(2rem, 2.4vw, 3.6rem);
   letter-spacing: 0;
   line-height: 0.9;
   max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 
 .metric-panel span {
@@ -301,6 +305,7 @@
 }
 
 .section-pad,
+.discovery-section,
 .featured-work,
 .process-section,
 .pricing-section,
@@ -366,6 +371,7 @@
 }
 
 .journey-grid,
+.discovery-grid,
 .deliverables-grid,
 .need-grid,
 .principle-grid {
@@ -377,6 +383,7 @@
 }
 
 .journey-grid article,
+.discovery-grid article,
 .deliverables-grid article,
 .principle-grid article {
   border-bottom: 1px solid var(--color-rule);
@@ -388,6 +395,7 @@
 }
 
 .journey-grid span,
+.discovery-grid span,
 .deliverables-grid span,
 .need-grid span,
 .principle-grid span {
@@ -395,6 +403,7 @@
 }
 
 .journey-grid h3,
+.discovery-grid h3,
 .deliverables-grid h3,
 .principle-grid h3,
 .option-grid h3 {
@@ -406,10 +415,21 @@
 }
 
 .journey-grid p,
+.discovery-grid p,
 .principle-grid p,
 .option-grid p {
   color: var(--color-muted);
   margin: 0;
+}
+
+.discovery-section {
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 72px;
+  padding-top: 72px;
+}
+
+.discovery-grid article {
+  min-height: 142px;
 }
 
 .featured-work {
@@ -465,6 +485,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.featured-live-button {
+  min-height: 58px;
+  padding-inline: 26px;
+}
+
+.quiet-case-link {
+  min-height: 44px;
+  opacity: 0.82;
 }
 
 .project-layout {
@@ -561,6 +591,13 @@
   grid-template-columns: minmax(0, 1fr) minmax(230px, 0.36fr);
 }
 
+.work-collage {
+  grid-template-columns: minmax(0, 0.92fr) minmax(220px, 0.48fr) minmax(
+      220px,
+      0.64fr
+    );
+}
+
 .project-image {
   background: white;
   border: 1px solid var(--color-rule);
@@ -581,6 +618,35 @@
 
 .gallery-grid.composed .project-image.phone-shot {
   grid-row: span 2;
+}
+
+.work-collage .project-image {
+  grid-column: auto;
+}
+
+.work-collage .project-image:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.work-collage .project-image:nth-child(2) {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  max-width: 360px;
+  width: 100%;
+}
+
+.work-collage .project-image:nth-child(3) {
+  grid-column: 1;
+  max-width: 520px;
+  width: 100%;
+}
+
+.work-collage .project-image:nth-child(4) {
+  grid-column: 2 / span 2;
+  justify-self: end;
+  max-width: 760px;
+  width: 100%;
 }
 
 .project-image.phone-shot {
@@ -959,6 +1025,10 @@
   color: var(--color-muted);
 }
 
+.support-wide {
+  grid-column: 1 / -1;
+}
+
 .need-grid {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -1053,7 +1123,7 @@
 }
 
 .form-note a,
-.footer-contact a,
+.footer-bottom a,
 .form-status {
   overflow-wrap: anywhere;
 }
@@ -1089,20 +1159,36 @@
 .site-footer {
   border-top: 1px solid var(--color-text);
   display: grid;
-  gap: 32px;
-  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 0.38fr);
+  gap: 28px;
+  grid-template-columns: minmax(0, 1fr);
   padding: 34px var(--page-gutter);
 }
 
-.site-footer .wordmark {
-  border-right: 0;
-  padding: 0;
+.footer-nav {
+  border-bottom: 1px solid var(--color-rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 26px;
+  padding-bottom: 28px;
 }
 
-.site-footer nav,
-.footer-contact {
+.footer-bottom {
+  align-items: end;
   display: grid;
-  gap: 10px;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.footer-brand-text {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-brand-text strong {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .site-footer a,
@@ -1124,19 +1210,11 @@
   .hero h1 {
     font-size: 4.75rem;
   }
-
-  .metric-panel strong {
-    font-size: 3.2rem;
-  }
 }
 
 @media (max-width: 1366px) {
   .hero h1 {
     font-size: 4.75rem;
-  }
-
-  .metric-panel strong {
-    font-size: 2.85rem;
   }
 
   .page-hero h1,
@@ -1190,11 +1268,14 @@
   }
 
   .hero-system {
+    justify-self: stretch;
     margin: 0 var(--page-gutter) 46px;
+    width: auto;
   }
 
   .hero-system,
   .journey-grid,
+  .discovery-grid,
   .deliverables-grid,
   .principle-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1305,10 +1386,12 @@
   }
 
   .journey-grid,
+  .discovery-grid,
   .deliverables-grid,
   .principle-grid,
   .gallery-grid,
-  .gallery-grid.composed {
+  .gallery-grid.composed,
+  .gallery-grid.work-collage {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -1316,8 +1399,13 @@
   .gallery-grid .project-image.wide,
   .gallery-grid .project-image.phone-shot,
   .gallery-grid.composed .project-image.wide,
-  .gallery-grid.composed .project-image.phone-shot {
+  .gallery-grid.composed .project-image.phone-shot,
+  .gallery-grid.work-collage .project-image {
     grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    max-width: none;
+    width: 100%;
   }
 
   .process-list article {
@@ -1329,6 +1417,11 @@
   }
 
   .site-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    align-items: start;
     grid-template-columns: 1fr;
   }
 }
@@ -1378,6 +1471,7 @@
 
   .hero-copy,
   .section-pad,
+  .discovery-section,
   .featured-work,
   .process-section,
   .pricing-section,
@@ -1419,7 +1513,7 @@
   }
 
   .metric-panel strong {
-    font-size: 3rem;
+    font-size: 2.65rem;
   }
 
   .metric-panel span {
@@ -1427,6 +1521,7 @@
   }
 
   .journey-grid article,
+  .discovery-grid article,
   .deliverables-grid article,
   .principle-grid article,
   .option-grid article,
@@ -1459,7 +1554,7 @@
   }
 
   .metric-panel strong {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 0.95;
   }
 
