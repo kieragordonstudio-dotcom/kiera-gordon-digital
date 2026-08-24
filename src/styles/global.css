@@ -591,11 +591,9 @@
   grid-template-columns: minmax(0, 1fr) minmax(230px, 0.36fr);
 }
 
-.work-collage {
-  grid-template-columns: minmax(0, 0.92fr) minmax(220px, 0.48fr) minmax(
-      220px,
-      0.64fr
-    );
+.gallery-grid.work-collage {
+  gap: clamp(24px, 2.4vw, 34px);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .project-image {
@@ -625,28 +623,23 @@
 }
 
 .work-collage .project-image:nth-child(1) {
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 9;
+  grid-row: 1;
 }
 
 .work-collage .project-image:nth-child(2) {
-  grid-column: 3;
-  grid-row: 1 / span 2;
-  justify-self: end;
-  max-width: 360px;
-  width: 100%;
+  grid-column: 10 / span 3;
+  grid-row: 1;
 }
 
 .work-collage .project-image:nth-child(3) {
-  grid-column: 1;
-  max-width: 520px;
-  width: 100%;
+  grid-column: 1 / span 6;
+  grid-row: 2;
 }
 
 .work-collage .project-image:nth-child(4) {
-  grid-column: 2 / span 2;
-  justify-self: end;
-  max-width: 760px;
-  width: 100%;
+  grid-column: 7 / span 6;
+  grid-row: 2;
 }
 
 .project-image.phone-shot {
