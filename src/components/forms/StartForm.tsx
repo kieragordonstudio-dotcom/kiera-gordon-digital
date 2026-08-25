@@ -55,10 +55,6 @@ function validate(formData: FormData) {
     errors.email = 'Enter a valid email address.';
   }
 
-  if (!getText(formData, 'url')) {
-    errors.url = 'Add your website, booking page or Instagram.';
-  }
-
   if (!getText(formData, 'businessType')) {
     errors.businessType = 'Choose the closest business type.';
   }
@@ -187,13 +183,12 @@ export function StartForm() {
       </label>
 
       <label>
-        <span>Current website / booking page / Instagram</span>
+        <span>Current website, booking page or Instagram, if you have one</span>
         <input
           name="url"
           type="text"
           aria-invalid={Boolean(errors.url)}
           aria-describedby={errors.url ? 'url-error' : undefined}
-          required
         />
         <ErrorMessage id="url-error" message={errors.url} />
       </label>

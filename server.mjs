@@ -188,7 +188,7 @@ function validateEnquiry(payload) {
   const errors = {};
   const email = getText(payload, 'email');
 
-  for (const key of ['name', 'business', 'url', 'businessType', 'projectType']) {
+  for (const key of ['name', 'business', 'businessType', 'projectType']) {
     if (!getText(payload, key)) {
       errors[key] = 'Required';
     }

@@ -76,6 +76,33 @@ const discoverySteps = [
   },
 ];
 
+const backendCapabilities = [
+  {
+    title: 'Dashboard',
+    copy: 'Bookings, revenue, deposits and upcoming activity',
+  },
+  {
+    title: 'Calendar',
+    copy: 'Appointments, availability and blocked time',
+  },
+  {
+    title: 'Services',
+    copy: 'Treatments, prices and durations',
+  },
+  {
+    title: 'Lookbook',
+    copy: 'Manage work shown on the website',
+  },
+  {
+    title: 'Website',
+    copy: 'Update salon details and opening hours',
+  },
+  {
+    title: 'Analytics',
+    copy: 'Bookings, clients, treatments and utilisation',
+  },
+];
+
 function cleanPath(path: string) {
   return path.replace(/\/$/, '') || '/';
 }
@@ -438,6 +465,14 @@ function OptionsSection() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            {option.name === 'KGD Managed' ? (
+              <Link
+                className="managed-demo-link"
+                href="/work/atelier-union#kgd-backend"
+              >
+                See the KGD backend in action →
+              </Link>
+            ) : null}
           </article>
         ))}
       </div>
@@ -670,6 +705,33 @@ function ProjectPage() {
             />
           ))}
         </div>
+        <section className="kgd-backend-section" id="kgd-backend">
+          <SectionHeader
+            label="KGD MANAGED"
+            title="The website is only half the system."
+            copy="The public website can connect to a private owner area for bookings, services, team, website content and business insights."
+          />
+          <div className="backend-capability-grid">
+            {backendCapabilities.map((capability) => (
+              <article key={capability.title}>
+                <h3>{capability.title}</h3>
+                <p>{capability.copy}</p>
+              </article>
+            ))}
+          </div>
+          <div className="backend-demo-row">
+            <p>Read-only demo using illustrative Atelier Union data.</p>
+            <a
+              className="button primary"
+              href="https://atelier-union.onrender.com/KGD"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Preview owner dashboard
+              <span aria-hidden="true">-&gt;</span>
+            </a>
+          </div>
+        </section>
         <div className="principle-grid">
           {projectPrinciples.map((principle, index) => (
             <article key={principle.title}>
@@ -839,21 +901,30 @@ function PrivacyPage() {
       <Eyebrow>Privacy</Eyebrow>
       <h1>Privacy notice</h1>
       <p>
-        Kiera Gordon Digital asks for the information needed to respond to
-        enquiries and deliver website projects, such as your name, business
-        details, email address and project information.
+        Kiera Gordon Digital can be contacted at{' '}
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> about this
+        notice or the information it holds about you.
       </p>
       <p>
-        Enquiry information is used to reply to you and discuss your project. It
-        is not sold. If a form provider, email service or hosting provider is
-        used, information may pass through that service as part of normal
-        website operation.
+        When you send an enquiry, Kiera Gordon Digital may collect your name,
+        business name, email address, website, booking page or Instagram if
+        supplied, business type, project need and any optional message.
       </p>
       <p>
-        Project material you provide, such as copy, images, reviews and booking
-        links, is used to build and launch your website.
+        This information is used to respond to enquiries, discuss projects and
+        deliver agreed work. It is not sold. Service providers such as hosting
+        and email infrastructure may process information where required to
+        operate the service.
       </p>
-      <p>{siteConfig.legalNote}</p>
+      <p>
+        Information is kept only for as long as reasonably necessary for the
+        enquiry or project, or to meet applicable legal requirements.
+      </p>
+      <p>
+        You can contact Kiera Gordon Digital about your information or data
+        rights. You can also make a complaint to the Information Commissioner’s
+        Office (ICO).
+      </p>
     </main>
   );
 }
