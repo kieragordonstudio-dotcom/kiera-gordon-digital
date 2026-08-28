@@ -76,31 +76,34 @@ const discoverySteps = [
   },
 ];
 
-const backendCapabilities = [
+const backendScreenshots = [
   {
-    title: 'Dashboard',
-    copy: 'Bookings, revenue, deposits and upcoming activity',
+    src: '/projects/atelier-union/backend/kgd-services.webp',
+    alt: 'Read-only KGD Services area showing treatments, prices and timings',
+    label: 'Services',
   },
   {
-    title: 'Calendar',
-    copy: 'Appointments, availability and blocked time',
+    src: '/projects/atelier-union/backend/kgd-lookbook.webp',
+    alt: 'Read-only KGD Lookbook area showing published salon work',
+    label: 'Lookbook',
   },
   {
-    title: 'Services',
-    copy: 'Treatments, prices and durations',
+    src: '/projects/atelier-union/backend/kgd-website.webp',
+    alt: 'Read-only KGD Website area showing salon details and opening hours',
+    label: 'Website',
   },
   {
-    title: 'Lookbook',
-    copy: 'Manage work shown on the website',
+    src: '/projects/atelier-union/backend/kgd-analytics.webp',
+    alt: 'Read-only KGD Analytics area showing illustrative business activity',
+    label: 'Analytics',
   },
-  {
-    title: 'Website',
-    copy: 'Update salon details and opening hours',
-  },
-  {
-    title: 'Analytics',
-    copy: 'Bookings, clients, treatments and utilisation',
-  },
+];
+
+const backendFeatures = [
+  { title: 'Bookings', copy: 'Connected booking system' },
+  { title: 'Services', copy: 'Manage treatments, prices and timings' },
+  { title: 'Website', copy: 'Update salon details and content' },
+  { title: 'Insights', copy: 'See bookings and business activity' },
 ];
 
 function cleanPath(path: string) {
@@ -329,6 +332,94 @@ function BrowserPreview({
       </span>
       <img src={screenshot.src} alt={screenshot.alt} loading="eager" />
     </a>
+  );
+}
+
+function BackendScreenshot({
+  screenshot,
+  className = '',
+}: {
+  screenshot: (typeof backendScreenshots)[number];
+  className?: string;
+}) {
+  return (
+    <figure className={`backend-screenshot ${className}`}>
+      <img src={screenshot.src} alt={screenshot.alt} loading="lazy" />
+      <figcaption>{screenshot.label}</figcaption>
+    </figure>
+  );
+}
+
+function BackendShowcase({ context }: { context: 'home' | 'case-study' }) {
+  const onHome = context === 'home';
+
+  return (
+    <section
+      className={`backend-showcase ${onHome ? 'backend-showcase-home' : 'kgd-backend-section'}`}
+      id={onHome ? undefined : 'kgd-backend'}
+    >
+      <SectionHeader
+        label="KGD MANAGED"
+        title={
+          onHome
+            ? 'Your website. Booking system. Owner dashboard.'
+            : 'The website is only half the system.'
+        }
+        copy={
+          onHome
+            ? 'Run bookings, services, team, website content and business insights from one connected system.'
+            : 'The public website can connect to a private owner area for bookings, services, team, website content and business insights.'
+        }
+      />
+      <div className="backend-editorial-grid">
+        <BackendScreenshot
+          screenshot={backendScreenshots[0]}
+          className="backend-screenshot-dominant"
+        />
+        <div className="backend-editorial-aside">
+          <BackendScreenshot screenshot={backendScreenshots[3]} />
+          <div className="backend-feature-grid">
+            {backendFeatures.map((feature) => (
+              <article key={feature.title}>
+                <h3>{feature.title}</h3>
+                <p>{feature.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <BackendScreenshot
+          screenshot={backendScreenshots[1]}
+          className="backend-screenshot-lookbook"
+        />
+        <BackendScreenshot
+          screenshot={backendScreenshots[2]}
+          className="backend-screenshot-website"
+        />
+      </div>
+      <div className="backend-demo-row">
+        <p>Read-only demo using illustrative Atelier Union data.</p>
+        <div className="backend-actions">
+          <a
+            className="button primary"
+            href="https://atelier-union.onrender.com/KGD"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {onHome ? 'Preview the owner dashboard' : 'Preview owner dashboard'}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          {onHome ? (
+            <Link
+              className="backend-case-link"
+              href="/work/atelier-union#kgd-backend"
+            >
+              See the full Atelier Union case study
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          ) : null}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -589,6 +680,7 @@ function HomePage() {
       <Hero />
       <DiscoverySection />
       <FeaturedWorkSection />
+      <BackendShowcase context="home" />
       <WhatYouGetSection />
       <ProcessSection />
       <PricingSection />
@@ -705,33 +797,7 @@ function ProjectPage() {
             />
           ))}
         </div>
-        <section className="kgd-backend-section" id="kgd-backend">
-          <SectionHeader
-            label="KGD MANAGED"
-            title="The website is only half the system."
-            copy="The public website can connect to a private owner area for bookings, services, team, website content and business insights."
-          />
-          <div className="backend-capability-grid">
-            {backendCapabilities.map((capability) => (
-              <article key={capability.title}>
-                <h3>{capability.title}</h3>
-                <p>{capability.copy}</p>
-              </article>
-            ))}
-          </div>
-          <div className="backend-demo-row">
-            <p>Read-only demo using illustrative Atelier Union data.</p>
-            <a
-              className="button primary"
-              href="https://atelier-union.onrender.com/KGD"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Preview owner dashboard
-              <span aria-hidden="true">-&gt;</span>
-            </a>
-          </div>
-        </section>
+        <BackendShowcase context="case-study" />
         <div className="principle-grid">
           {projectPrinciples.map((principle, index) => (
             <article key={principle.title}>
